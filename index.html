@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klinik UMKM - Pusat Layanan & Pengembangan Usaha</title>
+    <!-- Memuat Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat Font Poppins dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Memuat FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1e40af', // Blue 800
+                        secondary: '#f97316', // Orange 500
+                        accent: '#e0f2fe', // Sky 100
+                        dark: '#1e293b' // Slate 800
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero-pattern {
+            background-color: #1e40af;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #f97316;
+        }
+        .icon-wrapper {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover .icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Navbar -->
+    <nav class="bg-white/95 backdrop-blur-md shadow-sm fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center gap-3 group">
+                        <div class="bg-primary group-hover:bg-secondary transition-colors duration-300 text-white p-2.5 rounded-xl shadow-md">
+                            <i class="fas fa-store text-xl"></i>
+                        </div>
+                        <span class="font-bold text-2xl text-primary tracking-tight group-hover:text-secondary transition-colors duration-300">Klinik<span class="text-secondary group-hover:text-primary">UMKM</span></span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#beranda" class="text-gray-600 hover:text-primary font-medium transition-colors">Beranda</a>
+                    <a href="#layanan" class="text-gray-600 hover:text-primary font-medium transition-colors">Layanan</a>
+                    <a href="#tentang" class="text-gray-600 hover:text-primary font-medium transition-colors">Tentang Kami</a>
+                    <a href="#galeri" class="text-gray-600 hover:text-primary font-medium transition-colors">Galeri</a>
+                    <a href="#kontak" class="text-gray-600 hover:text-primary font-medium transition-colors">Kontak</a>
+                    <a href="#layanan" class="bg-secondary hover:bg-orange-600 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-lg shadow-orange-200 hover:shadow-orange-300 transform hover:-translate-y-0.5">
+                        Mulai Konsultasi
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary focus:outline-none p-2 bg-gray-100 rounded-lg">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#beranda" class="block px-4 py-3 text-gray-700 font-medium hover:bg-accent hover:text-primary rounded-lg transition-colors">Beranda</a>
+                <a href="#layanan" class="block px-4 py-3 text-gray-700 font-medium hover:bg-accent hover:text-primary rounded-lg transition-colors">Layanan</a>
+                <a href="#tentang" class="block px-4 py-3 text-gray-700 font-medium hover:bg-accent hover:text-primary rounded-lg transition-colors">Tentang Kami</a>
+                <a href="#galeri" class="block px-4 py-3 text-gray-700 font-medium hover:bg-accent hover:text-primary rounded-lg transition-colors">Galeri</a>
+                <a href="#kontak" class="block px-4 py-3 text-gray-700 font-medium hover:bg-accent hover:text-primary rounded-lg transition-colors">Kontak</a>
+                <div class="pt-2">
+                    <a href="#layanan" class="w-full text-center block px-4 py-3 bg-secondary hover:bg-orange-600 text-white font-medium rounded-lg shadow-md transition-colors">
+                        Mulai Konsultasi
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="pt-20">
+        <div class="hero-pattern text-white relative overflow-hidden">
+            <!-- Decorative blur background -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+            <div class="absolute top-0 right-48 w-96 h-96 bg-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 flex flex-col md:flex-row items-center relative z-10">
+                <div class="md:w-1/2 md:pr-12 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 bg-blue-900/50 border border-blue-400/30 text-blue-100 py-1.5 px-4 rounded-full text-sm font-semibold mb-6 backdrop-blur-sm">
+                        <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                        Pelayanan Publik Terpadu
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Solusi Tepat Untuk <br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">Kemajuan Bisnis</span> Anda
+                    </h1>
+                    <p class="text-blue-100 text-lg mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed text-opacity-90">
+                        Klinik UMKM hadir memfasilitasi pendataan, legalitas, hingga pemasaran digital. Mari kembangkan usaha kecil dan menengah Anda menuju pasar yang lebih luas.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#layanan" class="bg-secondary hover:bg-orange-600 text-white text-center px-8 py-3.5 rounded-full font-semibold transition-all shadow-[0_0_20px_rgba(249,115,22,0.4)] flex items-center justify-center gap-2 transform hover:-translate-y-1">
+                            Lihat 5 Layanan Kami <i class="fas fa-arrow-down"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-16 md:mt-0 relative group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-secondary to-primary rounded-2xl transform rotate-3 scale-105 opacity-50 group-hover:rotate-6 transition-transform duration-500"></div>
+                    <img src="https://placehold.co/800x600/ffffff/1e40af?text=Ilustrasi+Bimbingan+UMKM" alt="Bimbingan UMKM" class="rounded-2xl shadow-2xl relative z-10 w-full object-cover border-4 border-white/20">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl z-20 flex items-center gap-4 animate-bounce hover:animate-none">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-xl">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 font-medium">UMKM Naik Kelas</p>
+                            <p class="text-lg font-bold text-gray-800">100% Gratis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan Utama Section -->
+    <section id="layanan" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <span class="text-secondary font-bold tracking-wider uppercase text-sm mb-2 block">Program Fasilitasi</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6">5 Layanan Utama Klinik UMKM</h2>
+                <div class="h-1.5 w-24 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 rounded-full"></div>
+                <p class="text-gray-600 text-lg">Solusi komprehensif satu atap untuk membantu legalitas, operasional, dan pengembangan pasar usaha Anda.</p>
+            </div>
+
+            <!-- Menggunakan Flexbox dengan justify-center untuk menengahkan 5 item -->
+            <div class="flex flex-wrap justify-center gap-8">
+                
+                <!-- Layanan 1: Data UMKM -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover shadow-lg relative overflow-hidden group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] flex flex-col">
+                    <div class="absolute top-0 right-0 bg-gray-50 text-gray-300 w-24 h-24 -mr-8 -mt-8 rounded-full flex items-end justify-start p-6 font-black text-4xl group-hover:bg-primary group-hover:text-white transition-colors duration-500 z-0">
+                        1
+                    </div>
+                    <div class="w-16 h-16 bg-blue-50 text-primary rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm icon-wrapper relative z-10">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 relative z-10 group-hover:text-primary transition-colors">Data UMKM</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed flex-grow relative z-10 text-sm">
+                        Layanan pendataan profil usaha secara sistematis untuk masuk ke dalam database resmi pemerintah. Mempermudah akses mendapatkan bantuan dan program binaan.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-secondary transition-colors mt-auto relative z-10 bg-blue-50 w-max px-4 py-2 rounded-lg group-hover:bg-blue-100">
+                        Daftar Pendataan <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Layanan 2: Konsultasi UMKM -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover shadow-lg relative overflow-hidden group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] flex flex-col">
+                    <div class="absolute top-0 right-0 bg-gray-50 text-gray-300 w-24 h-24 -mr-8 -mt-8 rounded-full flex items-end justify-start p-6 font-black text-4xl group-hover:bg-green-600 group-hover:text-white transition-colors duration-500 z-0">
+                        2
+                    </div>
+                    <div class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm icon-wrapper relative z-10">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 relative z-10 group-hover:text-green-600 transition-colors">Konsultasi UMKM</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed flex-grow relative z-10 text-sm">
+                        Bimbingan langsung dengan tenaga ahli. Diskusikan berbagai kendala bisnis Anda, mulai dari manajemen keuangan, inovasi kemasan, hingga manajemen SDM.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-800 transition-colors mt-auto relative z-10 bg-green-50 w-max px-4 py-2 rounded-lg group-hover:bg-green-100">
+                        Jadwalkan Sesi <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Layanan 3: Legalitas/NIB -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover shadow-lg relative overflow-hidden group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] flex flex-col">
+                    <div class="absolute top-0 right-0 bg-gray-50 text-gray-300 w-24 h-24 -mr-8 -mt-8 rounded-full flex items-end justify-start p-6 font-black text-4xl group-hover:bg-purple-600 group-hover:text-white transition-colors duration-500 z-0">
+                        3
+                    </div>
+                    <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm icon-wrapper relative z-10">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 relative z-10 group-hover:text-purple-600 transition-colors">Legalitas / NIB</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed flex-grow relative z-10 text-sm">
+                        Pendampingan pengurusan Nomor Induk Berusaha (NIB), Sertifikasi Halal, PIRT, dan izin usaha lainnya agar bisnis Anda aman secara hukum dan kredibel.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-purple-600 font-semibold hover:text-purple-800 transition-colors mt-auto relative z-10 bg-purple-50 w-max px-4 py-2 rounded-lg group-hover:bg-purple-100">
+                        Urus Izin Sekarang <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Layanan 4: Surat Rekomendasi BBM -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover shadow-lg relative overflow-hidden group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] flex flex-col">
+                    <div class="absolute top-0 right-0 bg-gray-50 text-gray-300 w-24 h-24 -mr-8 -mt-8 rounded-full flex items-end justify-start p-6 font-black text-4xl group-hover:bg-red-600 group-hover:text-white transition-colors duration-500 z-0">
+                        4
+                    </div>
+                    <div class="w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm icon-wrapper relative z-10">
+                        <i class="fas fa-gas-pump"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 relative z-10 group-hover:text-red-600 transition-colors">Rekomendasi BBM</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed flex-grow relative z-10 text-sm">
+                        Layanan penerbitan surat rekomendasi untuk mendapatkan akses pembelian Bahan Bakar Minyak (BBM) bersubsidi khusus untuk operasional UMKM yang memenuhi syarat.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-red-600 font-semibold hover:text-red-800 transition-colors mt-auto relative z-10 bg-red-50 w-max px-4 py-2 rounded-lg group-hover:bg-red-100">
+                        Ajukan Surat <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Layanan 5: Katalog & Pemasaran Digital -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover shadow-lg relative overflow-hidden group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] flex flex-col border-b-4 border-b-secondary">
+                    <div class="absolute top-0 right-0 bg-gray-50 text-gray-300 w-24 h-24 -mr-8 -mt-8 rounded-full flex items-end justify-start p-6 font-black text-4xl group-hover:bg-secondary group-hover:text-white transition-colors duration-500 z-0">
+                        5
+                    </div>
+                    <div class="w-16 h-16 bg-orange-50 text-secondary rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm icon-wrapper relative z-10">
+                        <i class="fas fa-laptop-house"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 relative z-10 group-hover:text-secondary transition-colors">Katalog & Pemasaran</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed flex-grow relative z-10 text-sm">
+                        Bantuan memajang produk Anda di e-Katalog, pelatihan digital marketing, hingga panduan berjualan di marketplace dan media sosial agar jangkauan pasar semakin luas.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-secondary font-semibold hover:text-orange-700 transition-colors mt-auto relative z-10 bg-orange-50 w-max px-4 py-2 rounded-lg group-hover:bg-orange-100">
+                        Mulai Go-Digital <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistik Section -->
+    <section class="bg-gradient-to-r from-primary to-blue-900 py-20 border-y-4 border-secondary relative overflow-hidden">
+        <!-- Background accents -->
+        <div class="absolute -left-10 top-0 w-32 h-32 bg-white opacity-5 rounded-full blur-xl"></div>
+        <div class="absolute right-10 bottom-0 w-48 h-48 bg-secondary opacity-10 rounded-full blur-2xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center md:divide-x md:divide-blue-700/50">
+                <div class="p-4 group">
+                    <div class="text-4xl md:text-5xl font-extrabold text-white mb-2 group-hover:scale-110 transition-transform duration-300">5,200<span class="text-secondary">+</span></div>
+                    <div class="text-blue-200 font-medium">UMKM Terdata</div>
+                </div>
+                <div class="p-4 group">
+                    <div class="text-4xl md:text-5xl font-extrabold text-white mb-2 group-hover:scale-110 transition-transform duration-300">3,150<span class="text-secondary">+</span></div>
+                    <div class="text-blue-200 font-medium">NIB Diterbitkan</div>
+                </div>
+                <div class="p-4 group">
+                    <div class="text-4xl md:text-5xl font-extrabold text-white mb-2 group-hover:scale-110 transition-transform duration-300">1,200<span class="text-secondary">+</span></div>
+                    <div class="text-blue-200 font-medium">Sesi Konsultasi</div>
+                </div>
+                <div class="p-4 group">
+                    <div class="text-4xl md:text-5xl font-extrabold text-white mb-2 group-hover:scale-110 transition-transform duration-300">98<span class="text-secondary">%</span></div>
+                    <div class="text-blue-200 font-medium">Indeks Kepuasan</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Kami Section -->
+    <section id="tentang" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2 relative">
+                    <!-- Image composition -->
+                    <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="https://placehold.co/600x500/f3f4f6/1e40af?text=Pendampingan+UMKM" alt="Tim Klinik UMKM" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <!-- decorative background block -->
+                    <div class="absolute -bottom-6 -left-6 w-full h-full bg-accent rounded-2xl z-0"></div>
+                    
+                    <div class="absolute top-10 -right-8 bg-white p-5 rounded-2xl shadow-xl z-20 animate-pulse">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center text-xl">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-800">Layanan Resmi</p>
+                                <p class="text-xs text-gray-500">Pemerintah Daerah</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <span class="text-secondary font-bold tracking-wider uppercase text-sm mb-2 block">Tentang Kami</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6 leading-tight">Mitra Terpercaya Untuk <br/>Pertumbuhan Usaha Anda</h2>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        Klinik UMKM adalah program fasilitasi terpadu yang dirancang khusus untuk memecahkan masalah para pelaku usaha mikro dan kecil. Kami percaya bahwa UMKM adalah tulang punggung ekonomi yang harus didukung penuh legalitas dan perkembangannya.
+                    </p>
+                    
+                    <div class="space-y-5 mb-8">
+                        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div class="bg-blue-100 text-primary w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Pendamping Tersertifikasi</h4>
+                                <p class="text-sm text-gray-600 mt-1">Layanan bimbingan ditangani langsung oleh konsultan dan praktisi bisnis berpengalaman.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div class="bg-orange-100 text-secondary w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Proses Cepat & Transparan</h4>
+                                <p class="text-sm text-gray-600 mt-1">Pendaftaran dan pengurusan izin dilakukan tanpa hambatan birokrasi yang rumit.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#layanan" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-blue-800 text-white px-8 py-3.5 rounded-full font-medium transition-colors shadow-lg shadow-blue-200">
+                        Jelajahi Layanan <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="kontak" class="bg-dark text-gray-300 pt-20 pb-10 border-t-4 border-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                
+                <!-- Brand Info -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-white text-primary p-2.5 rounded-xl">
+                            <i class="fas fa-store text-xl"></i>
+                        </div>
+                        <span class="font-bold text-2xl tracking-tight text-white">Klinik<span class="text-secondary">UMKM</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed text-sm">
+                        Pusat layanan fasilitasi dan pendampingan terpadu satu pintu untuk memberdayakan serta memajukan ekosistem UMKM lokal.
+                    </p>
+                    <div class="flex space-x-3">
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-secondary text-white flex items-center justify-center rounded-lg transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-secondary text-white flex items-center justify-center rounded-lg transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-secondary text-white flex items-center justify-center rounded-lg transition-colors"><i class="fab fa-whatsapp text-lg"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-6">Tautan Cepat</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#beranda" class="hover:text-secondary transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-gray-600"></i> Beranda</a></li>
+                        <li><a href="#layanan" class="hover:text-secondary transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-gray-600"></i> Katalog Layanan</a></li>
+                        <li><a href="#tentang" class="hover:text-secondary transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-gray-600"></i> Profil Klinik</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-gray-600"></i> Galeri Kegiatan</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-gray-600"></i> FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Layanans -->
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-6">Layanan Tersedia</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#layanan" class="hover:text-secondary transition-colors flex items-center gap-2"><i class="fas fa-check text-xs text-green-500"></i> Pendataan UMKM</a></li>
+                        <li><a href="#layanan" class="hover:text-secondary transition-colors flex items-center gap-2"><i class="fas fa-check text-xs text-green-500"></i> Konsultasi Bisnis</a></li>
+                        <li><a href="#layanan" class="hover:text-secondary transition-colors flex items-center gap-2"><i class="fas fa-check text-xs text-green-500"></i> Legalitas & NIB</a></li>
+                        <li><a href="#layanan" class="hover:text-secondary transition-colors flex items-center gap-2"><i class="fas fa-check text-xs text-green-500"></i> Surat Rekomendasi BBM</a></li>
+                        <li><a href="#layanan" class="hover:text-secondary transition-colors flex items-center gap-2"><i class="fas fa-check text-xs text-green-500"></i> Fasilitasi Pemasaran Digital</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kontak Info -->
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-6">Pusat Bantuan</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-secondary mt-1 text-lg"></i>
+                            <span>Gedung Pelayanan Terpadu Lt. 2<br>Jl. Sudirman No. 123, Pusat Kota</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone-alt text-secondary text-lg"></i>
+                            <span>(021) 1234-5678</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-secondary text-lg"></i>
+                            <span>halo@klinikumkm.go.id</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-clock text-secondary text-lg"></i>
+                            <span>Senin - Jumat (08:00 - 16:00)</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Klinik UMKM. Hak Cipta Dilindungi.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white transition-colors">Syarat & Ketentuan</a>
+                    <a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script for interactivity -->
+    <script>
+        
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Sticky Navbar Effect (Add shadow on scroll)
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+            } else {
+                navbar.classList.add('shadow-sm');
+                navbar.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>
