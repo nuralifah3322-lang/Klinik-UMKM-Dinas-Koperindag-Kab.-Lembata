@@ -1,0 +1,1 @@
+# Klinik-UMKM-Dinas-Koperindag-Kab.-Lembata
